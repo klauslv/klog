@@ -1,23 +1,23 @@
-package com.github.loglib;
+package com.github.log;
 
 import android.app.Application;
 
-import com.github.loglib.api.InitLogListener;
+import com.github.log.printer.InitLogListener;
 
 /**
  * Created by lvming on 12/7/20 3:19 PM.
  * Email: lvming@guazi.com
  * Description:日志打印类
  */
-public final class LogUtil {
+public final class KLog {
 
 
-    public static LoggerImpl sLog = new LoggerImpl();
+    public static KLogImpl sLog = new KLogImpl();
 
-    private static LogConfig logConfig = LogConfig.getInstance();
+    private static KLogConfig sKLogConfig = KLogConfig.getInstance();
 
     public static void init(Application application, InitLogListener initLogListener) {
-        sLog = LoggerImpl.getsLoggerImpl();
+        sLog = KLogImpl.getsKLogImpl();
         sLog.init(application, initLogListener);
     }
 
@@ -89,14 +89,14 @@ public final class LogUtil {
         sLog.e(tag, format, obj);
     }
 
-    public static LogConfig getLogConfig() {
-        return logConfig;
+    public static KLogConfig getKLogConfig() {
+        return sKLogConfig;
     }
 
     /**
      * 上传日志
      */
     public static void uploadLog() {
-        logConfig.uploadLog();
+        sKLogConfig.uploadLog();
     }
 }

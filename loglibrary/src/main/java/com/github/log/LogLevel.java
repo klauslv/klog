@@ -1,4 +1,4 @@
-package com.github.loglib;
+package com.github.log;
 
 /**
  * Created by lvming on 12/14/20 7:06 PM.

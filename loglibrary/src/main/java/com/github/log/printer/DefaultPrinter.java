@@ -1,9 +1,7 @@
-package com.github.loglib.api.impl;
+package com.github.log.printer;
 
 import android.app.Application;
 import android.util.Log;
-
-import com.github.loglib.api.BasePrinter;
 
 
 /**

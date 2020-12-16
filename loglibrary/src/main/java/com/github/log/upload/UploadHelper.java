@@ -1,4 +1,4 @@
-package com.github.loglib.upload;
+package com.github.log.upload;
 
 import java.util.Map;
 

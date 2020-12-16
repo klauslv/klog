@@ -1,4 +1,4 @@
-package com.github.loglib.api;
+package com.github.log.printer;
 
 import android.text.TextUtils;
 

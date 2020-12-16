@@ -1,20 +1,20 @@
-package com.github.loglib;
+package com.github.log;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.github.loglib.api.IPrinter;
-import com.github.loglib.api.InitLogListener;
-import com.github.loglib.api.impl.DefaultPrinter;
-import com.github.loglib.upload.IUpload;
-import com.github.loglib.upload.IUploadCallback;
+import com.github.log.printer.IPrinter;
+import com.github.log.printer.DefaultPrinter;
+import com.github.log.printer.InitLogListener;
+import com.github.log.upload.IUpload;
+import com.github.log.upload.IUploadCallback;
 
 /**
  * Created by lvming on 12/15/20 4:18 PM.
  * Email: lvming@guazi.com
  * Description: 日志管理类
  */
-public final class LogConfig {
+public final class KLogConfig {
     private final String SYS_INFO;
 
     private static IPrinter printer = new DefaultPrinter();
@@ -26,7 +26,7 @@ public final class LogConfig {
     private IUpload mIUpload;
     private IUploadCallback mIUploadCallback;
 
-    private LogConfig() {
+    private KLogConfig() {
         final StringBuilder sb = new StringBuilder();
         try {
             sb.append("VERSION.RELEASE:[" + android.os.Build.VERSION.RELEASE);
@@ -51,10 +51,10 @@ public final class LogConfig {
     }
 
     public static class LogManagerHolder {
-        public static LogConfig sInstance = new LogConfig();
+        public static KLogConfig sInstance = new KLogConfig();
     }
 
-    public static LogConfig getInstance() {
+    public static KLogConfig getInstance() {
         return LogManagerHolder.sInstance;
     }
 
@@ -97,7 +97,7 @@ public final class LogConfig {
         }
     }
 
-    public LogConfig setPrinter(IPrinter printer) {
+    public KLogConfig setPrinter(IPrinter printer) {
         this.printer = printer;
         return LogManagerHolder.sInstance;
     }
@@ -106,7 +106,7 @@ public final class LogConfig {
         return printer;
     }
 
-    public LogConfig setIsDebuggable(boolean debuggable) {
+    public KLogConfig setIsDebuggable(boolean debuggable) {
         isDebuggable = debuggable;
         return LogManagerHolder.sInstance;
     }
@@ -127,7 +127,7 @@ public final class LogConfig {
         return mIUpload;
     }
 
-    public LogConfig setIUpload(IUpload IUpload) {
+    public KLogConfig setIUpload(IUpload IUpload) {
         mIUpload = IUpload;
         return LogManagerHolder.sInstance;
     }
@@ -136,7 +136,7 @@ public final class LogConfig {
         return mIUploadCallback;
     }
 
-    public LogConfig setIUploadCallback(IUploadCallback IUploadCallback) {
+    public KLogConfig setIUploadCallback(IUploadCallback IUploadCallback) {
         mIUploadCallback = IUploadCallback;
         return LogManagerHolder.sInstance;
     }

@@ -1,8 +1,8 @@
-package com.github.loglib;
+package com.github.log;
 
 import android.app.Application;
 
-import com.github.loglib.api.InitLogListener;
+import com.github.log.printer.InitLogListener;
 
 
 /**
@@ -10,23 +10,23 @@ import com.github.loglib.api.InitLogListener;
  * Email: lvming@guazi.com
  * Description:
  */
-public class LoggerImpl {
+public class KLogImpl {
 
-    private static LoggerImpl sLoggerImpl = new LoggerImpl();
+    private static KLogImpl sKLogImpl = new KLogImpl();
 
 
-    public static LoggerImpl getsLoggerImpl() {
-        return sLoggerImpl;
+    public static KLogImpl getsKLogImpl() {
+        return sKLogImpl;
     }
 
-    public static void setsLoggerImpl(LoggerImpl sLoggerImpl) {
-        LoggerImpl.sLoggerImpl = sLoggerImpl;
+    public static void setsKLogImpl(KLogImpl sKLogImpl) {
+        KLogImpl.sKLogImpl = sKLogImpl;
     }
 
     public void init(Application application, InitLogListener initLogListener) {
-        LogConfig.getInstance().beforeInit(application, initLogListener);
-        LogConfig.getInstance().init(application, initLogListener);
-        LogConfig.getInstance().afterInit(application, initLogListener);
+        KLogConfig.getInstance().beforeInit(application, initLogListener);
+        KLogConfig.getInstance().init(application, initLogListener);
+        KLogConfig.getInstance().afterInit(application, initLogListener);
     }
 
     public void v(String tag, String msg) {
@@ -70,84 +70,84 @@ public class LoggerImpl {
     }
 
     public void json(String json) {
-        if (LogConfig.getPrinter() != null) {
-            LogConfig.getPrinter().json(json);
+        if (KLogConfig.getPrinter() != null) {
+            KLogConfig.getPrinter().json(json);
         }
     }
 
     public void xml(String xml) {
-        if (LogConfig.getPrinter() != null) {
-            LogConfig.getPrinter().xml(xml);
+        if (KLogConfig.getPrinter() != null) {
+            KLogConfig.getPrinter().xml(xml);
         }
     }
 
     public void v(String tag, final String format, final Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().v(tag, log);
+            KLogConfig.getPrinter().v(tag, log);
         }
     }
 
     public void d(String tag, final String format, final Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().d(tag, log);
+            KLogConfig.getPrinter().d(tag, log);
         }
     }
 
     public void i(String tag, final String format, final Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().i(tag, log);
+            KLogConfig.getPrinter().i(tag, log);
         }
     }
 
     public void w(String tag, final String format, final Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().w(tag, log);
+            KLogConfig.getPrinter().w(tag, log);
         }
     }
 
     public void e(String tag, final String format, final Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().e(tag, log);
+            KLogConfig.getPrinter().e(tag, log);
         }
     }
 
     public void w(String tag, Throwable tr, String format, Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().w(tag, log, tr);
+            KLogConfig.getPrinter().w(tag, log, tr);
         }
     }
 
     public void e(String tag, Throwable tr, String format, Object... obj) {
-        if (LogConfig.getPrinter() != null) {
+        if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
                 log = "";
             }
-            LogConfig.getPrinter().e(tag, log, tr);
+            KLogConfig.getPrinter().e(tag, log, tr);
         }
     }
 }
