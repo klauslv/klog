@@ -49,12 +49,20 @@ public final class KLog {
         sLog.w(tag, msg);
     }
 
+    public static void w(String tag, Throwable tr) {
+        sLog.w(tag, "", tr);
+    }
+
     public static void w(String tag, String msg, Throwable tr) {
         sLog.w(tag, msg, tr);
     }
 
     public static void e(String tag, String msg) {
         sLog.e(tag, msg);
+    }
+
+    public static void e(String tag, Throwable tr) {
+        sLog.e(tag, "", tr);
     }
 
     public static void e(String tag, String msg, Throwable tr) {
