@@ -14,7 +14,6 @@ public class KLogImpl {
 
     private static KLogImpl sKLogImpl = new KLogImpl();
 
-
     public static KLogImpl getsKLogImpl() {
         return sKLogImpl;
     }
@@ -30,42 +29,72 @@ public class KLogImpl {
     }
 
     public void v(String tag, String msg) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.VERBOSE) {
+            return;
+        }
         v(tag, msg, (Object[]) null);
     }
 
     public void v(String tag, String msg, Throwable tr) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         w(tag, tr, msg, (Object[]) null);
     }
 
     public void d(String tag, String msg) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.DEBUG) {
+            return;
+        }
         d(tag, msg, (Object[]) null);
     }
 
     public void d(String tag, String msg, Throwable tr) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         w(tag, tr, msg, (Object[]) null);
     }
 
     public void i(String tag, String msg) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.INFO) {
+            return;
+        }
         i(tag, msg, (Object[]) null);
     }
 
     public void i(String tag, String msg, Throwable tr) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         w(tag, tr, msg, (Object[]) null);
     }
 
     public void w(String tag, String msg) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         w(tag, msg, (Object[]) null);
     }
 
     public void w(String tag, String msg, Throwable tr) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         w(tag, tr, msg, (Object[]) null);
     }
 
     public void e(String tag, String msg) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.ERROR) {
+            return;
+        }
         e(tag, msg, (Object[]) null);
     }
 
     public void e(String tag, String msg, Throwable tr) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.ERROR) {
+            return;
+        }
         e(tag, tr, msg, (Object[]) null);
     }
 
@@ -82,6 +111,9 @@ public class KLogImpl {
     }
 
     public void v(String tag, final String format, final Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.VERBOSE) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
@@ -92,6 +124,9 @@ public class KLogImpl {
     }
 
     public void d(String tag, final String format, final Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.DEBUG) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
@@ -102,6 +137,9 @@ public class KLogImpl {
     }
 
     public void i(String tag, final String format, final Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.INFO) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
@@ -112,6 +150,9 @@ public class KLogImpl {
     }
 
     public void w(String tag, final String format, final Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
@@ -122,6 +163,9 @@ public class KLogImpl {
     }
 
     public void e(String tag, final String format, final Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.ERROR) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
@@ -132,6 +176,9 @@ public class KLogImpl {
     }
 
     public void w(String tag, Throwable tr, String format, Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.WARN) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {
@@ -142,6 +189,9 @@ public class KLogImpl {
     }
 
     public void e(String tag, Throwable tr, String format, Object... obj) {
+        if (KLogConfig.getInstance().getLevel() < KLogLevel.ERROR) {
+            return;
+        }
         if (KLogConfig.getPrinter() != null) {
             String log = obj == null ? format : String.format(format, obj);
             if (log == null) {

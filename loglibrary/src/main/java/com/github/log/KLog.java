@@ -12,7 +12,7 @@ import com.github.log.printer.InitLogListener;
 public final class KLog {
 
 
-    public static KLogImpl sLog = new KLogImpl();
+    private static KLogImpl sLog = new KLogImpl();
 
     private static KLogConfig sKLogConfig = KLogConfig.getInstance();
 

@@ -20,6 +20,8 @@ public final class KLogConfig {
     private static IPrinter printer = new DefaultPrinter();
     private boolean isDebuggable = false;
 
+    private int level = KLogLevel.ALL;
+
     private Context mContext;
     private InitLogListener mInitLogListener;
 
@@ -99,7 +101,7 @@ public final class KLogConfig {
 
     public KLogConfig setPrinter(IPrinter printer) {
         this.printer = printer;
-        return LogManagerHolder.sInstance;
+        return this;
     }
 
     public static IPrinter getPrinter() {
@@ -108,7 +110,7 @@ public final class KLogConfig {
 
     public KLogConfig setIsDebuggable(boolean debuggable) {
         isDebuggable = debuggable;
-        return LogManagerHolder.sInstance;
+        return this;
     }
 
     public boolean isDebuggable() {
@@ -119,17 +121,13 @@ public final class KLogConfig {
         return mContext;
     }
 
-    public void setContext(Context context) {
-        mContext = context;
-    }
-
     public IUpload getIUpload() {
         return mIUpload;
     }
 
     public KLogConfig setIUpload(IUpload IUpload) {
         mIUpload = IUpload;
-        return LogManagerHolder.sInstance;
+        return this;
     }
 
     public IUploadCallback getIUploadCallback() {
@@ -138,7 +136,16 @@ public final class KLogConfig {
 
     public KLogConfig setIUploadCallback(IUploadCallback IUploadCallback) {
         mIUploadCallback = IUploadCallback;
-        return LogManagerHolder.sInstance;
+        return this;
+    }
+
+    public KLogConfig setLevel(int level) {
+        this.level = level;
+        return this;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public void uploadLog(){

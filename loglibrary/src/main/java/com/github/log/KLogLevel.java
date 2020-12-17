@@ -5,7 +5,7 @@ package com.github.log;
  * Email: lvming@guazi.com
  * Description:日志级别
  */
-public class LogLevel {
+public class KLogLevel {
 
     /**
      * Log level for XLog.v.
